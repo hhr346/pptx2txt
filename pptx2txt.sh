@@ -89,7 +89,7 @@ for idx in `seq 1 $nslides`;
       echo "SLIDE $idx OF $nslides"
       echo " "
     fi;
-
+    echo `unzip -qc "$pptx_filename" ppt/slides/slide$idx.xml`
     unzip -qc "$pptx_filename" ppt/slides/slide$idx.xml | perl -e 'while(<>) {  if (@list = ($_ =~ m/\<a:t\>(.+?)\<\/a:t\>/g)) { print "$_\n" for @list } }'
 
 done
